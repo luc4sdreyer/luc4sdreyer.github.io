@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style type="text/css">
+.inputArea {
+    /*border: 1px solid blue; */
+}
+
+.comboBlock {
+    margin: 10px; display: inline-block; font-family: Arial; font-size: 14px;
+    /*width: 300px; min-width: 300px; border: 1px solid red; border: 1px solid grey; */
+}
+
+.comboBlockText {
+    margin-left: 3px;
+}
+
+#chart {
+    width: 1300px;
+    height: 600px;
+}
+
+.xLabel {
+    font-family: Arial;
+}
+
+.yLabel {
+    font-family: Arial;
+}
+
+#textTest {
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+}
+</style>
+
+<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+<!--script type="text/javascript" src="d3.v3.min.js"></script-->
+<script type="text/javascript">
+
+/*
+d3.js chart layout is based on abeppu’s block #1074045, found at http://bl.ocks.org/abeppu/1074045
+*/
+
+String.prototype.format = function() {
+    var formatted = this;
+    for (var i = 0; i < arguments.length; i++) {
+        var regexp = new RegExp('\\{'+i+'\\}', 'gi');
+        formatted = formatted.replace(regexp, arguments[i]);
+    }
+    return formatted;
+};
+
+var end = new Date();
+var start = new Date(end.getTime() - 1000 * 60 * 60 * 24 * 60);
+var data = [];
+
+function min(a, b){ return a < b ? a : b ; }
+
+function max(a, b){ return a > b ? a : b; }
+
+var allData = [];
+var numFilesLoaded = 0;
+var numFilesToLoad = 1;
+
+function loadData(error, rawData) {    
+    if (rawData && rawData.length > 0) {
+        for (var run = 0; run < rawData.length; run++) {
+            allData.push(rawData[run]);
+        }
+    }
+    numFilesLoaded++;
+    if (numFilesLoaded == numFilesToLoad) {
+        processData(allData);
+    }
+}
+
+function generate() {
+    console.log("generating chart....");
+    allData = [];
+    numFilesLoaded = 0;
+    for (var i = 0; i < numFilesToLoad; i++) {
+        d3.json((i+1) + "/full_stats.json", loadData);    
+    }
+}
+
+function processData(rawData) {
+    var dataMap = {};
+    console.log("rawData.length: "  +rawData.length);
+    var selectedIndex = document.getElementById('comboDataSelection').selectedIndex;
+    var dataSelection = document.getElementById("comboDataSelection").options[selectedIndex].value.split("_");
+    if (dataSelection.length < 1 || dataSelection.length > 2) {
+        console.err("dataSelection.length must be equal to 1 or 2: " + dataSelection);
+    }
+
+    selectedIndex = document.getElementById('comboStdevCalcType').selectedIndex;
+    var stdevCalcType = document.getElementById("comboStdevCalcType").options[selectedIndex].value;
+
+    selectedIndex = document.getElementById('comboIncludePaddingData').selectedIndex;
+    var includePaddingData = document.getElementById("comboIncludePaddingData").options[selectedIndex].value;
+    console.log("includePaddingData: " + includePaddingData);
+
+    var numGens = 0;
+    var maxGenID = 0;
+    for (var run = 0; run < rawData.length; run++) {
+        for (var gen = 0; gen < rawData[run].length; gen++) {
+            numGens++;
+            var currentGenID = rawData[run][gen]["gen"];
+            if (currentGenID > maxGenID) {
+                maxGenID = currentGenID;
+            }
+        }
+    }
+    console.log("numGens: " + numGens);
+    console.log("maxGenID: " + maxGenID);
+
+    //
+    // Put all champ fitness info into one list
+    //
+    for (var run = 0; run < rawData.length; run++) {
+        var finalGenData = 0;
+        var currentGenID = 0;
+        for (var gen = 0; gen < rawData[run].length; gen++) {
+            var generationStats = rawData[run][gen];
+            var newData = 0;
+            if (dataSelection.length === 1) {
+                newData = generationStats[dataSelection[0]];
+            } else if (dataSelection.length === 2) {
+                newData = generationStats[dataSelection[0]][dataSelection[1]];
+            } else {
+                console.err("dataSelection.length ")
+                
+            }
+            finalGenData = newData;
+            currentGenID = generationStats["gen"];
+
+            if (!dataMap[currentGenID]) {
+                dataMap[currentGenID] = [];
+            }
+            var genData = dataMap[currentGenID];
+            genData.push(newData);
+            dataMap[currentGenID] = genData;
+
+            if (newData < min) {
+                min = newData;
+            }
+            if (newData > max) {
+                max = newData;
+            }
+        }
+
+        //
+        // Fill data on missing generations (due to fitness level reaching max before generation limit)
+        //
+        if (includePaddingData === "yes") {
+            for (var genID = currentGenID+1; genID <= maxGenID; genID++) {
+                if (!dataMap[genID]) {
+                    dataMap[genID] = [];
+                }
+                var genData = dataMap[genID];
+                genData.push(finalGenData);
+                dataMap[genID] = genData;
+                numGens++;
+            }
+        }
+    }
+
+    console.log("After padding: numGens: " + numGens);
+    console.log("After padding: maxGenID: " + maxGenID);
+    var dataPoints = 0;
+
+    var data = new Array(dataMap.length);
+    for (var gen in dataMap) {
+        data[gen-1] = dataMap[gen];
+        dataPoints += dataMap[gen].length;
+        //if (gen > 90) { console.log("dataMap[" + gen + "]: " + dataMap[gen]); }
+    }
+
+    console.log("Data points: " + dataPoints);
+
+    //
+    // Get list of arrays (data) into OHLC data format
+    //
+
+    // Adj_Close: "346.45"      
+    // Close: "346.45"          stdev high
+    // Date: "2014-02-05"       gen
+    // High: "349.37"           max
+    // Low: "337.73"            min
+    // Open: "346.00"           stdev low
+    // Symbol: "AMZN"           
+    // Volume: "4435400"        
+    // timestamp: 1391558400    gen
+
+    var dataStats = [];
+    for (var i = 0; i < data.length; i++) {
+        var genStats = {};
+        var min = Infinity; 
+        var max = -Infinity;
+        var average = 0;
+        var stdev = 0;
+        var stdevUp = 0;
+        var numUp = 0;
+        var stdevDown = 0;
+        var numDown = 0;
+        for (var j = 0; j < data[i].length; j++) {
+            if (data[i][j] < min) {
+                min = data[i][j];
+            }
+            if (data[i][j] > max) {
+                max = data[i][j];
+            }
+            average += data[i][j];
+        }
+        average /= data[i].length;
+        for (var j = 0; j < data[i].length; j++) {
+            if (data[i][j] > average) {
+                stdevUp += Math.pow(data[i][j] - average, 2);
+                numUp++;
+            }
+            if (data[i][j] < average) {
+                stdevDown += Math.pow(data[i][j] - average, 2);
+                numDown++;
+            }
+            stdev += Math.pow(data[i][j] - average, 2);
+        }
+
+        stdev = Math.sqrt(stdev / data[i].length);
+        stdevUp = Math.sqrt(stdevUp / numUp);
+        stdevDown = Math.sqrt(stdevDown / numDown);
+
+        genStats["High"] = max;
+        genStats["Low"] = min;
+        if (stdevCalcType === "standard") {
+            genStats["Close"] = average+stdev;
+            genStats["Open"] = average-stdev;
+        } else {
+            genStats["Close"] = average+stdevUp;
+            genStats["Open"] = average-stdevDown;
+        }
+        genStats["timestamp"] = i+1;
+        genStats["average"] = average;
+        if (i > 5 && i < 10) {
+            console.log("genStats: " + JSON.stringify(genStats," "));
+        }
+        dataStats.push(genStats);
+    }
+
+    buildChart(dataStats);
+}
+
+function buildChart(data){  
+    var width = document.getElementById('chart').clientWidth;
+    var height = document.getElementById('chart').clientHeight;
+    var selectedIndex = document.getElementById('comboDataSelection').selectedIndex;
+    var dataSelection = document.getElementById("comboDataSelection").options[selectedIndex].text;
+
+    var margin = 20;
+    var marginRight = 100;
+    var marginBottom = 100;
+    var barWidthFactor = 0.5;
+
+    d3.select("svg")
+        .remove();
+
+    var chart = d3.select("#chart")
+        .append("svg:svg")
+        .attr("class", "chart")
+        .attr("width", width)
+        .attr("height", height);
+
+    var y = d3.scale.linear()
+        .domain([0, d3.max(data.map(function(x){return x["High"];}))])
+        .range([height-marginBottom, margin]);
+    var x = d3.scale.linear()
+        .domain([d3.min(data.map(function(d){return d.timestamp;})), d3.max(data.map(function(d){ return d.timestamp;}))])
+        .range([margin,width-marginRight]);
+
+    chart.selectAll("line.x")
+        .data(x.ticks(10))
+        .enter().append("svg:line")
+        .attr("class", "x")
+        .attr("x1", x)
+        .attr("x2", x)
+        .attr("y1", margin)
+        .attr("y2", height - marginBottom)
+        .attr("stroke", "#ccc");
+
+    chart.selectAll("line.y")
+        .data(y.ticks(10))
+        .enter().append("svg:line")
+        .attr("class", "y")
+        .attr("x1", margin)
+        .attr("x2", width - marginRight)
+        .attr("y1", y)
+        .attr("y2", y)
+        .attr("stroke", "#ccc");
+
+    chart.selectAll("text.xrule")
+        .data(x.ticks(10))
+        .enter().append("svg:text")
+        .attr("class", "xrule")
+        .attr("x", x)
+        .attr("y", height - marginBottom)
+        .attr("dy", 20)
+        .attr("text-anchor", "middle")
+        .text(function(d){ return d });
+
+    chart.selectAll("text.yrule")
+        .data(y.ticks(10))
+        .enter().append("svg:text")
+        .attr("class", "yrule")
+        .attr("x", width - marginRight)
+        .attr("y", y)
+        .attr("dy", 0)
+        .attr("dx", 20)      
+        .attr("text-anchor", "middle")
+        .text(String);
+
+    chart.selectAll("line.stem")
+        .data(data)
+        .enter().append("svg:line")
+        //.attr("class", "stem")
+        .attr("x1", function(d) { return x(d.timestamp) + barWidthFactor/2 * (width - (margin + marginRight))/ data.length;})
+        .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor/2 * (width - (margin + marginRight))/ data.length;})
+        .attr("y1", function(d) { return y(d.High);})
+        .attr("y2", function(d) { return y(d.Low); })
+        .attr("stroke", "black")
+        .attr("stroke-dasharray", "3, 3");
+
+    chart.selectAll("line.stem")
+        .data(data)
+        .enter().append("svg:line")
+        .attr("x1", function(d) { return x(d.timestamp) + 0 * (width - (margin + marginRight))/ data.length;})
+        .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor * (width - (margin + marginRight))/ data.length;})
+        .attr("y1", function(d) { return y(d.High); })
+        .attr("y2", function(d) { return y(d.High); })
+        .attr("stroke", "black");
+
+    chart.selectAll("line.stem")
+        .data(data)
+        .enter().append("svg:line")
+        .attr("x1", function(d) { return x(d.timestamp) + 0 * (width - (margin + marginRight))/ data.length;})
+        .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor * (width - (margin + marginRight))/ data.length;})
+        .attr("y1", function(d) { return y(d.Low); })
+        .attr("y2", function(d) { return y(d.Low); })
+        .attr("stroke", "black");
+
+
+    chart.selectAll("rect")
+        .data(data)
+        .enter().append("svg:rect")
+        .attr("x", function(d) { return x(d.timestamp); })
+        .attr("y", function(d) {return y(max(d.Open, d.Close));})         
+        .attr("height", function(d) { return y(min(d.Open, d.Close))-y(max(d.Open, d.Close));})
+        .attr("width", function(d) { return barWidthFactor * (width - (margin + marginRight))/data.length; })
+        .attr("stroke", "black")
+        .attr("fill", "white");
+
+    chart.selectAll("line.stem")
+        .data(data)
+        .enter().append("svg:line")
+        .attr("x1", function(d) { return x(d.timestamp) + 0 * (width - (margin + marginRight))/ data.length;})
+        .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor * (width - (margin + marginRight))/ data.length;})
+        .attr("y1", function(d) { return y(d.average); })
+        .attr("y2", function(d) { return y(d.average); })
+        .attr("stroke", "black");
+
+    // x-axis label
+    chart.append("text")
+        .attr("class", "xLabel")
+        .attr("text-anchor", "end")
+        .attr("x", (width - marginRight) * 0.55)
+        .attr("y", height - marginBottom + 40)
+        .text("Generation number");
+
+    
+    var textTest = document.getElementById("textTest");
+    textTest.innerHTML = dataSelection;
+    var textTestWidth = textTest.clientWidth;
+
+    // y-axis label
+    chart.append("text")
+        .attr("class", "yLabel")
+        .attr("text-anchor", "end")
+        .attr("y", width - marginRight + 35)
+        .attr("x", -(height - marginBottom - textTest.clientWidth) * 0.5)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text(dataSelection);
+}
+
+generate();
+
+</script>
+</head>
+<body>
+
+<div class="inputArea">
+    <div class="comboBlock">
+        <div class="comboBlockText" >Data:</div>
+        <select id="comboDataSelection" onchange="generate()">
+          <option value="fitness_0">Fitness: maximum</option>
+          <option value="fitness_1">Fitness: minimum</option>
+          <option value="fitness_2" selected >Fitness: mean</option>
+          <option value="fitness_3">Fitness: stdev</option>
+          <option value="complexity_0">Complexity: maximum</option>
+          <option value="complexity_1">Complexity: minimum</option>
+          <option value="complexity_2">Complexity: mean</option>
+          <option value="complexity_3">Complexity: stdev</option>
+          <option value="species">Number of Species</option>
+        </select>
+    </div>
+
+    <div class="comboBlock">
+        <div class="comboBlockText" >Standard deviation calculation:</div>
+        <select id="comboStdevCalcType" onchange="generate()">
+          <option value="standard" selected>Normal</option>
+          <option value="separate">Separate above and below mean</option>
+        </select>
+    </div>
+
+    <div class="comboBlock">
+        <div class="comboBlockText" >Pad data so that all runs</br>end on the same generation:</div>
+        <select id="comboIncludePaddingData" onchange="generate()">
+          <option value="no">No</option>
+          <option value="yes" selected>Yes</option>
+        </select>
+    </div>
+
+</div>
+
+<div id="chart"></div>
+
+<div id="textTest" class="yLabel"></div>
+</body>
+</html>
