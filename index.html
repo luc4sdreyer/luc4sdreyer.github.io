@@ -82,9 +82,16 @@ function generate() {
     console.log("generating chart....");
     allData = [];
     numFilesLoaded = 0;
-    for (var i = 0; i < numFilesToLoad; i++) {
-        d3.json((i+1) + "/full_stats.json", loadData);    
+
+    var filename;
+    if (document.getElementById('comboFilename')) {
+        var selectedIndex = document.getElementById('comboFilename').selectedIndex;
+        filename = document.getElementById("comboFilename").options[selectedIndex].value;
+    } else {
+        filename = "simp_xor_100";   
     }
+
+    d3.json("1/" + filename + ".json", loadData);
 }
 
 function processData(rawData) {
@@ -400,6 +407,14 @@ generate();
 <body>
 
 <div class="inputArea">
+    <div class="comboBlock">
+        <div class="comboBlockText" >Filename:</div>
+        <select id="comboFilename" onchange="generate()">
+          <option value="simp_xor_100" selected>simp_xor_100</option>
+          <option value="comp_xor_100">comp_xor_100</option>
+        </select>
+    </div>
+
     <div class="comboBlock">
         <div class="comboBlockText" >Data:</div>
         <select id="comboDataSelection" onchange="generate()">
