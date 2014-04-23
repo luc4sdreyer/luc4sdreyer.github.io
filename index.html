@@ -417,9 +417,9 @@ generate();
     <div class="comboBlock">
         <div class="comboBlockText" >Data:</div>
         <select id="comboDataSelection" onchange="generate()">
-          <option value="fitness_0">Fitness: maximum</option>
+          <option value="fitness_0" selected >Fitness: maximum</option>
           <option value="fitness_1">Fitness: minimum</option>
-          <option value="fitness_2" selected >Fitness: mean</option>
+          <option value="fitness_2">Fitness: mean</option>
           <option value="fitness_3">Fitness: stdev</option>
           <option value="complexity_0">Complexity: maximum</option>
           <option value="complexity_1">Complexity: minimum</option>
@@ -432,8 +432,8 @@ generate();
     <div class="comboBlock">
         <div class="comboBlockText" >Standard deviation calculation:</div>
         <select id="comboStdevCalcType" onchange="generate()">
-          <option value="standard" selected>Normal</option>
-          <option value="separate">Separate above and below mean</option>
+          <option value="standard">Normal</option>
+          <option value="separate" selected>Separate above and below mean</option>
         </select>
     </div>
 
