@@ -87,6 +87,7 @@ function generate() {
         var selectedIndex = document.getElementById('comboFilename').selectedIndex;
         filename = document.getElementById("comboFilename").options[selectedIndex].value;
     } else {
+        console.log("Could not load file " + filename);
         filename = "simp_xor_100";   
     }
 
@@ -94,6 +95,11 @@ function generate() {
 }
 
 function processData(rawData) {
+    // Possibly flatten the array
+    if (rawData[0][0][0]) {
+        rawData = [].concat.apply([], rawData);
+    }
+
     var dataMap = {};
     console.log("rawData.length: "  +rawData.length);
     var selectedIndex = document.getElementById('comboDataSelection').selectedIndex;
@@ -137,7 +143,7 @@ function processData(rawData) {
             } else if (dataSelection.length === 2) {
                 newData = generationStats[dataSelection[0]][dataSelection[1]];
             } else {
-                console.err("dataSelection.length ")
+                console.err("dataSelection.length ");
                 
             }
             finalGenData = newData;
@@ -212,6 +218,15 @@ function processData(rawData) {
         var numUp = 0;
         var stdevDown = 0;
         var numDown = 0;
+        if (dataSelection == "foundWinner") {
+            var sum = 0.0;
+            for (var j = 0; j < data[i].length; j++) {
+                sum += data[i][j];
+            }
+            for (var j = 0; j < data[i].length; j++) {
+                data[i][j] = sum/data[i].length;
+            }
+        }
         for (var j = 0; j < data[i].length; j++) {
             if (data[i][j] < min) {
                 min = data[i][j];
@@ -410,7 +425,10 @@ generate();
         <div class="comboBlockText" >Filename:</div>
         <select id="comboFilename" onchange="generate()">
           <option value="simp_xor_100" selected>simp_xor_100</option>
+          <option value="simp_xor_100_2" selected>simp_xor_100_2</option>
           <option value="comp_xor_100">comp_xor_100</option>
+          <option value="comp_xor_100_2">comp_xor_100_2</option>
+          <option value="full_stats">full_stats</option>
         </select>
     </div>
 
@@ -426,6 +444,9 @@ generate();
           <option value="complexity_2">Complexity: mean</option>
           <option value="complexity_3">Complexity: stdev</option>
           <option value="species">Number of Species</option>
+          <option value="champFitness">Champion's fitness</option>
+          <option value="champComplexity">Champion's complexity</option>
+          <option value="foundWinner">Reached target fitness</option>
         </select>
     </div>
 
