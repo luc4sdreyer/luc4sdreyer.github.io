@@ -1,0 +1,323 @@
+[ 
+[
+	[
+		{ "gen": 1, "fitness": [100001, 6, 711.22, 8134.45], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2707.17, 16104.3], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 702.32, 8135], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 718.22, 8134.69], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1388.49, 11464.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [890, 6, 52.3133, 114.454], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 890, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 4311.02, 19626.1], "complexity": [8, 7, 7.04667, 0.210924], "species": 1, "champFitness": 100001, "champComplexity": 8, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2034.9, 13995.2], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1392.05, 11463.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [629, 6, 45.96, 93.1395], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 629, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 3098.24, 16337.6], "complexity": [8, 7, 7.01333, 0.114698], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1379.96, 11464.7], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 721.067, 8134.08], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [2611, 6, 58.3, 220.829], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 2611, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 7742.55, 26092.9], "complexity": [8, 7, 7.02667, 0.161107], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2038.89, 13994.7], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1372.39, 11465.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 710.333, 8134.59], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 718.74, 8133.93], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 709.933, 8134.69], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [397, 6, 40.6267, 65.9424], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 397, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 1516.9, 11455.7], "complexity": [8, 7, 7.04, 0.195959], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 721.307, 8135.07], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [431, 6, 45.9933, 73.5083], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 431, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 3014.49, 16100.4], "complexity": [8, 7, 7.02, 0.14], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [407, 6, 48.4067, 68.0812], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 407, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 4197.99, 19561.6], "complexity": [8, 7, 7.00667, 0.081377], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1364.27, 11466.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 735.34, 8139.55], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 723.86, 8134.49], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1368.39, 11465.9], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	]
+], 
+[
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2706.16, 16104.7], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 745.093, 8134.49], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2053.84, 13992.8], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 700.993, 8135.14], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1368.75, 11465.9], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1369.2, 11465.8], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [373, 6, 34.22, 50.2014], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 373, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 2297.67, 14013.3], "complexity": [8, 7, 7.02667, 0.161107], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2045.23, 13994.1], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 722.053, 8134.29], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 723.687, 8134.06], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 733.007, 8135.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2720.61, 16102.3], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2709.19, 16104], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1385.83, 11464.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1402.91, 11464.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2040.87, 13994.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2712.19, 16103.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1378.58, 11464.8], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1393.43, 11465.1], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1381.64, 11464.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1372.75, 11465.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2706.55, 16104.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [744, 6, 42.3, 80.8575], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 744, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 4414.59, 19630.8], "complexity": [8, 7, 7.04, 0.195959], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1379.01, 11464.9], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [683, 6, 45.4, 86.2687], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 683, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 2833.04, 16086.2], "complexity": [8, 7, 7.02667, 0.161107], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	]
+], 
+[
+	[
+		{ "gen": 1, "fitness": [2367, 6, 55.5667, 197.813], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 2367, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 1639.07, 11478.1], "complexity": [8, 7, 7.02, 0.14], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1370.12, 11465.7], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1371.39, 11465.9], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 731.387, 8134.51], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [681, 6, 45.2, 80.1595], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 681, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 1778.97, 11587], "complexity": [8, 7, 7.02667, 0.161107], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1381.98, 11464.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 724.62, 8135.08], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2037.49, 13994.9], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 3377.49, 17942.7], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 712.547, 8134.35], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 721.74, 8134.06], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2054.81, 13994.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2041.07, 13994.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 719.707, 8136.55], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1380.32, 11464.8], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 728.773, 8134.87], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1376.9, 11465], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1372.91, 11465.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 700.653, 8135.2], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2047.85, 13993.7], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 727.847, 8133.58], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 702.933, 8135], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1381.47, 11464.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1374.24, 11465.3], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 727.613, 8134.35], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	]
+], 
+[
+	[
+		{ "gen": 1, "fitness": [100001, 6, 4034.95, 19589.1], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 714.607, 8134.75], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2031.13, 13995.8], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 721.893, 8135.14], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2041.89, 13994.3], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 709.753, 8134.56], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 712.48, 8134.52], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 2065.64, 13993.3], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1439.76, 11472.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [511, 6, 41.4267, 66.5436], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 511, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 1513.56, 11463.6], "complexity": [8, 7, 7.01333, 0.114698], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 710.947, 8134.41], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 3369.58, 17944.1], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 713.6, 8134.21], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 715.893, 8134.64], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [1391, 6, 44.0733, 128.118], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 1391, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 2212.33, 13981.7], "complexity": [8, 7, 7.02, 0.14], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [1531, 6, 46.52, 131.414], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 1531, "champComplexity": 7, "foundWinner": 0},
+		{ "gen": 2, "fitness": [100001, 5, 1580.93, 11471.6], "complexity": [8, 7, 7.04, 0.195959], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 704.56, 8134.9], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1382.97, 11464.8], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 704.407, 8134.94], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 714.82, 8134.5], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1375.19, 11465.4], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1371.26, 11465.7], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 4716.87, 21081.7], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 701.313, 8135.11], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	],
+	[
+		{ "gen": 1, "fitness": [100001, 6, 1389.11, 11464.1], "complexity": [7, 7, 7, 0], "species": 1, "champFitness": 100001, "champComplexity": 7, "foundWinner": 1}
+	]
+]] 

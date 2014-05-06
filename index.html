@@ -35,6 +35,19 @@
     height: auto;
     width: auto;
 }
+
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 0.5px;
+}
+
+.line::hover {
+    fill: none;
+    stroke: red;
+    stroke-width: 1.5px;
+}
+
 </style>
 
 <script type="text/javascript" src="d3/d3.v3.min.js"></script>
@@ -85,7 +98,7 @@ function generate() {
     var filename;
     if (document.getElementById('comboFilename')) {
         var selectedIndex = document.getElementById('comboFilename').selectedIndex;
-        filename = document.getElementById("comboFilename").options[selectedIndex].value;
+        filename = document.getElementById("comboFilename").options[selectedIndex].text;
     } else {
         console.log("Could not load file " + filename);
         filename = "simp_xor_100";   
@@ -270,14 +283,18 @@ function processData(rawData) {
         dataStats.push(genStats);
     }
 
-    buildChart(dataStats);
+    buildChart(dataStats, data);
 }
 
-function buildChart(data){  
+function buildChart(data, rawData) {  
     var width = document.getElementById('chart').clientWidth;
     var height = document.getElementById('chart').clientHeight;
     var selectedIndex = document.getElementById('comboDataSelection').selectedIndex;
     var dataSelection = document.getElementById("comboDataSelection").options[selectedIndex].text;
+    var dataSelectionValue = document.getElementById("comboDataSelection").options[selectedIndex].value;
+    selectedIndex = document.getElementById('comboIndividualLines').selectedIndex;
+    var individualLines = document.getElementById("comboIndividualLines").options[selectedIndex].value;
+    
 
     var margin = 20;
     var marginRight = 100;
@@ -293,11 +310,18 @@ function buildChart(data){
         .attr("width", width)
         .attr("height", height);
 
-    var y = d3.scale.linear()
-        .domain([0, d3.max(data.map(function(x){return x["High"];}))])
-        .range([height-marginBottom, margin]);
+    var y;
+    if (dataSelectionValue == "foundWinner") {
+        y = d3.scale.linear()
+            .domain([0, 1])
+            .range([height-marginBottom, margin]);
+    } else {
+        y = d3.scale.linear()
+            .domain([0, d3.max(data.map(function(x){return x["High"];}))])
+            .range([height-marginBottom, margin]);
+    }
     var x = d3.scale.linear()
-        .domain([d3.min(data.map(function(d){return d.timestamp;})), d3.max(data.map(function(d){ return d.timestamp;}))])
+        .domain([d3.min(data.map(function(d){return d.timestamp;})), 300])
         .range([margin,width-marginRight]);
 
     chart.selectAll("line.x")
@@ -341,54 +365,77 @@ function buildChart(data){
         .attr("text-anchor", "middle")
         .text(String);
 
-    chart.selectAll("line.stem")
-        .data(data)
-        .enter().append("svg:line")
-        //.attr("class", "stem")
-        .attr("x1", function(d) { return x(d.timestamp) + barWidthFactor/2 * (width - (margin + marginRight))/ data.length;})
-        .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor/2 * (width - (margin + marginRight))/ data.length;})
-        .attr("y1", function(d) { return y(d.High);})
-        .attr("y2", function(d) { return y(d.Low); })
-        .attr("stroke", "black")
-        .attr("stroke-dasharray", "3, 3");
+    console.log("individualLines: " + individualLines);
+    if (individualLines == "no") {
+        chart.selectAll("line.stem")
+            .data(data)
+            .enter().append("svg:line")
+            //.attr("class", "stem")
+            .attr("x1", function(d) { return x(d.timestamp) + barWidthFactor/2 * (width - (margin + marginRight))/ data.length;})
+            .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor/2 * (width - (margin + marginRight))/ data.length;})
+            .attr("y1", function(d) { return y(d.High);})
+            .attr("y2", function(d) { return y(d.Low); })
+            .attr("stroke", "black")
+            .attr("stroke-dasharray", "3, 3");
 
-    chart.selectAll("line.stem")
-        .data(data)
-        .enter().append("svg:line")
-        .attr("x1", function(d) { return x(d.timestamp) + 0 * (width - (margin + marginRight))/ data.length;})
-        .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor * (width - (margin + marginRight))/ data.length;})
-        .attr("y1", function(d) { return y(d.High); })
-        .attr("y2", function(d) { return y(d.High); })
-        .attr("stroke", "black");
+        chart.selectAll("line.stem")
+            .data(data)
+            .enter().append("svg:line")
+            .attr("x1", function(d) { return x(d.timestamp) + 0 * (width - (margin + marginRight))/ data.length;})
+            .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor * (width - (margin + marginRight))/ data.length;})
+            .attr("y1", function(d) { return y(d.High); })
+            .attr("y2", function(d) { return y(d.High); })
+            .attr("stroke", "black");
 
-    chart.selectAll("line.stem")
-        .data(data)
-        .enter().append("svg:line")
-        .attr("x1", function(d) { return x(d.timestamp) + 0 * (width - (margin + marginRight))/ data.length;})
-        .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor * (width - (margin + marginRight))/ data.length;})
-        .attr("y1", function(d) { return y(d.Low); })
-        .attr("y2", function(d) { return y(d.Low); })
-        .attr("stroke", "black");
+        chart.selectAll("line.stem")
+            .data(data)
+            .enter().append("svg:line")
+            .attr("x1", function(d) { return x(d.timestamp) + 0 * (width - (margin + marginRight))/ data.length;})
+            .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor * (width - (margin + marginRight))/ data.length;})
+            .attr("y1", function(d) { return y(d.Low); })
+            .attr("y2", function(d) { return y(d.Low); })
+            .attr("stroke", "black");
 
 
-    chart.selectAll("rect")
-        .data(data)
-        .enter().append("svg:rect")
-        .attr("x", function(d) { return x(d.timestamp); })
-        .attr("y", function(d) {return y(max(d.Open, d.Close));})         
-        .attr("height", function(d) { return y(min(d.Open, d.Close))-y(max(d.Open, d.Close));})
-        .attr("width", function(d) { return barWidthFactor * (width - (margin + marginRight))/data.length; })
-        .attr("stroke", "black")
-        .attr("fill", "white");
+        chart.selectAll("rect")
+            .data(data)
+            .enter().append("svg:rect")
+            .attr("x", function(d) { return x(d.timestamp); })
+            .attr("y", function(d) {return y(max(d.Open, d.Close));})         
+            .attr("height", function(d) { return y(min(d.Open, d.Close))-y(max(d.Open, d.Close));})
+            .attr("width", function(d) { return barWidthFactor * (width - (margin + marginRight))/data.length; })
+            .attr("stroke", "black")
+            .attr("fill", "white");
 
-    chart.selectAll("line.stem")
-        .data(data)
-        .enter().append("svg:line")
-        .attr("x1", function(d) { return x(d.timestamp) + 0 * (width - (margin + marginRight))/ data.length;})
-        .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor * (width - (margin + marginRight))/ data.length;})
-        .attr("y1", function(d) { return y(d.average); })
-        .attr("y2", function(d) { return y(d.average); })
-        .attr("stroke", "black");
+        chart.selectAll("line.stem")
+            .data(data)
+            .enter().append("svg:line")
+            .attr("x1", function(d) { return x(d.timestamp) + 0 * (width - (margin + marginRight))/ data.length;})
+            .attr("x2", function(d) { return x(d.timestamp) + barWidthFactor * (width - (margin + marginRight))/ data.length;})
+            .attr("y1", function(d) { return y(d.average); })
+            .attr("y2", function(d) { return y(d.average); })
+            .attr("stroke", "black");
+    } else {
+        var line = d3.svg.line()
+            .x(function(d) { return x(d.x); })
+            .y(function(d) { return y(d.y); });
+
+        for (var i = 0; i < rawData[0].length; i++) {
+            var lineData = [];
+
+            for (var j = 0; j < rawData.length; j++) {
+                var dataPoint = {};
+                dataPoint.x = j+1;
+                dataPoint.y = rawData[j][i];
+                lineData.push(dataPoint);
+            }
+
+            chart.append("path")
+                .datum(lineData)
+                .attr("class", "line")
+                .attr("d", line);
+        }
+    }
 
     // x-axis label
     chart.append("text")
@@ -414,7 +461,10 @@ function buildChart(data){
         .text(dataSelection);
 }
 
-generate();
+window.onload = function() {
+    generate();    
+}
+
 
 </script>
 </head>
@@ -424,11 +474,18 @@ generate();
     <div class="comboBlock">
         <div class="comboBlockText" >Filename:</div>
         <select id="comboFilename" onchange="generate()">
-          <option value="simp_xor_100" selected>simp_xor_100</option>
-          <option value="simp_xor_100_2" selected>simp_xor_100_2</option>
-          <option value="comp_xor_100">comp_xor_100</option>
-          <option value="comp_xor_100_2">comp_xor_100_2</option>
-          <option value="full_stats">full_stats</option>
+          <option selected>xor_comp_100</option>
+          <option>xor_simp_100</option>
+          <option>pole1_comp_100</option>
+          <option>pole1_simp_100</option>
+          <option>pole2_with_velocity_comp_100</option>
+          <option>pole2_with_velocity_simp_100</option>
+          <option>pole2_without_velocity_comp_200</option>
+          <option>pole2_without_velocity_comp_300</option>
+          <option>pole2_without_velocity_simp_300</option>
+          <option>pole2_without_velocity_static_phased_300_20_10</option>
+          <option>pole2_without_velocity_static_phased_300_30_20</option>
+          <option>pole2_without_velocity_random_300</option>
         </select>
     </div>
 
@@ -463,6 +520,14 @@ generate();
         <select id="comboIncludePaddingData" onchange="generate()">
           <option value="no">No</option>
           <option value="yes" selected>Yes</option>
+        </select>
+    </div>
+
+    <div class="comboBlock">
+        <div class="comboBlockText" >View individual data points:</div>
+        <select id="comboIndividualLines" onchange="generate()">
+          <option value="no" selected >No</option>
+          <option value="yes" >Yes</option>
         </select>
     </div>
 
